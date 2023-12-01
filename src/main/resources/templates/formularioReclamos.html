@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Gestionar Reclamos</title>    
+	<!-- icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />    
+    <!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <style>
+		body{
+			background: #FCFCFC;
+		}
+		.btn-tabla{
+			border: 0;
+			background-color: transparent;
+			color: #6C757D;
+		}
+		/*sweetalert*/
+		.swal2-title{
+			font-size: 20px ;
+		}
+		.swal2-popup button{
+			font-size: 16px ;
+		}
+	</style>
+</head>
+<body>	
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">
+			Control Solicitante
+		</a>
+
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/solicitante}">Control de Solicitantes</a>
+				</li>
+
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/equipo}">Equipos Disponibles</a>
+				</li>
+
+			</ul>
+			
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/listarReclamos}">Listar Reclamo</a>
+				</li>
+
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/nuevoreclamo}">Registrar Reclamo</a>
+				</li>
+
+			</ul>
+
+		</div>
+
+	</nav>
+	<br>
+	</nav>
+	<br>
+	<div class="container  my-4">
+		<div class="d-flex justify-content-center mt-5">				    		       	      	
+			<h1>Formulario de Reclamos</h1>
+		</div>
+		<div class="d-flex justify-content-center ">
+			<form th:action="@{/registrarRec}" method="post" th:object="${reclamo}" class="col-7">	
+            	<div class="modal-body">
+                    <div>
+                        <label class="form-label" id="lblCodRec">Código de Reclamo</label>
+                        <input type="text"  class="form-control" th:field="*{cod_Rec}" />
+                    </div>
+                    <div>
+                        <label class="form-label">Tipo de Reclamo</label>						
+                        <select  class="form-select" th:field="*{cod_Tipo_Rec}">
+							<option hidden selected value="0">Seleccione...</option>
+							<option th:each = "tipo:${tipos_reclamos}" th:value="${tipo.cod_Tipo_Rec}" th:text = "${tipo.desc_Tipo_Rec}"></option>
+						</select>
+                    </div>
+                    <div>
+                        <label class="form-label">Descripción del Reclamo</label>
+                        <textarea cols="20" rows="3" class="form-control" th:field="*{desc_Rec}" placeholder="Ingrese la descripción"></textarea>
+                    </div>           
+                    <div>
+                        <label class="form-label">Cargo de recepción</label>
+                        <select  class="form-select" th:field="*{cod_Car_Recep}">
+							<option hidden selected value="0">Seleccione...</option>
+							<option th:each = "cargo:${cargos_recepcion}" th:value="${cargo.cod_Car_Recep}" th:text = "${cargo.cod_Car_Recep}"></option>
+						</select>
+                    </div>
+                    <div>
+                        <label class="form-label">Encargado</label>
+						<select  class="form-select" th:field="*{cod_Enc_Log}">
+							<option hidden selected value="0">Seleccione...</option>
+							<option th:each = "encargado:${encargados_logistica}" th:value="${encargado.cod_Enc_Log}" th:text = "${encargado.nom_Enc_Log + ' ' + encargado.ape_Enc_Log}"></option>
+						</select>
+                    </div>                
+            	</div>
+            	<div class="text-end my-2">
+              		<a th:href="@{/listarReclamos}" class="btn btn-secondary">Regresar</a>
+              		<button type="submit"  class="btn btn-primary" id="btn-form">Guardar</button> 
+            	</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

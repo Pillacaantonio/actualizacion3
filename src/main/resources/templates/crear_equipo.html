@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+
+<head>
+
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<title>Registro de Solicitantes</title>
+
+</head>
+
+<body>
+
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">
+			Control Solicitante
+		</a>
+
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/equipo}">Usuarios Registrados</a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/equipo}">Equipos Disponibles</a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/listarReclamos}">Listar Reclamo</a>
+				</li>
+
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/nuevoreclamo}">Registrar Reclamo</a>
+				</li>
+
+			</ul>
+		
+
+		</div>
+
+	</nav>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Registro de Solicitante</h1>
+				<div class="card-body">
+					<form th:action="@{/equipo}" th:object="${equipo}" method="POST">
+							</div>
+							<div class="form-group">
+							<label>Codigo : </label>
+							<input type="text" name="codigo" th:field"*{cod_Equipo}" class="form-control"
+								placeholder="Digite el codigo" />
+
+
+						</div>
+
+						<div class="form-group">
+							<label>Marca : </label>
+							<input type="text" name="marca" th:field"*{marca_Equipo}" class="form-control"
+								placeholder="Digite la marca" />
+
+
+						</div>
+						<div class="form-group">
+							<label>Modelo : </label>
+							<input type="text" name="modelo" th:field"*{modelo_Equipo}" class="form-control"
+								placeholder="Digite su cargo" />
+
+
+							<div class="card-footer">
+
+								<input type="submit" value="Guardar" class="btn btn-success" </div>
+
+
+
+					</form>
+
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+</body>
+
+
+</html>

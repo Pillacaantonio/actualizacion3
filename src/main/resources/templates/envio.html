@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <title>Listado de Envíos</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">
+			Control Solicitante
+		</a>
+
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			
+			
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/solicitante}">Usuarios Registrados</a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/equipo}">Equipos Disponibles</a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/listarReclamos}">Listar Reclamo</a>
+				</li>
+
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/nuevoreclamo}">Registrar Reclamo</a>
+				</li>
+
+			</ul>
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/envio}">Envios</a>
+				</li>
+
+			</ul>
+		
+
+		</div>
+
+	</nav>
+	<br>
+
+    <div class="container">
+        <div class="row">
+            <h1>Listado de Envíos</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{/envio/nuevo}" class="btn btn-primary btn-sm mb3">Agregar Envío</a>
+            </div>
+            <br>
+        </div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Código de Envío</th>
+                    <th>Solicitante</th>
+                    <th>Equipo</th>
+                    <th>Destino</th>
+                    <th>Recibe otra persona</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="envio : ${envios}">
+                    <td th:text="${envio.cod_envio}"></td>
+                    <td th:text="${envio.solicitante.nombre}"></td>
+                    <td th:text="${envio.equipo.marca_Equipo}"></td>
+                    <td th:text="${envio.destino}"></td>
+                    <td th:text="${envio.nom_Otro}"></td>
+                    <td>
+                        <a th:href="@{/envio/editar/{id}(id=${envio.cod_envio})}" class="btn btn-info">Editar</a>
+                        <a th:href="@{/envio/{id}(id=${envio.cod_envio})}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

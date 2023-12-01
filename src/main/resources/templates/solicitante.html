@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+
+<head>
+
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>Insert title here</title>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">
+			Control Solicitante
+		</a>
+
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			
+			
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/solicitante}">Usuarios Registrados</a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/equipo}">Equipos Disponibles</a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/listarReclamos}">Listar Reclamo</a>
+				</li>
+
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/nuevoreclamo}">Registrar Reclamo</a>
+				</li>
+
+			</ul>
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/envio}">Envios</a>
+				</li>
+
+			</ul>
+		
+
+		</div>
+
+	</nav>
+	<br>
+	
+
+	<div class="container">
+		<div class="row">
+			<h1>Listar Postulante</h1>
+
+
+		</div>
+		<div class="row">
+			<div class="col-lg-3">
+				<a th:href="@{solicitante/nuevo}" class="btn btn-primary btn-sm mb3">Agregar Solicitante</a>
+				
+			</div>
+			<br>
+		</div>
+		
+		<table class="table table-striped ">
+			<thead class="thead-dark">
+				<tr>
+	 
+					<th>Apellido</th>
+					<th>Nombre</th>
+					<th>Cargo</th>
+					<th>Correo</th>
+			
+					<th>Estado civil</th>
+					<th>Fecha de Nacimiento</th>
+					<th>Telefono</th>
+					<th>Acciones</th>
+					<br>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="soli:${solicitante}">
+				 
+					<td th:text="${soli.apellido}">Apellido</td>
+					<td th:text="${soli.nombre}">Nombre</td>
+					<td th:text="${soli.cargo}">Cargo</td>
+					<td th:text="${soli.correo}">Correo</td>
+			
+					<td th:text="${soli.estadoCivil}">Estado civil</td>
+					<td th:text="${soli.fechaNacimiento}">Fecha de Nacimiento</td>
+					<td th:text="${soli.telefono}">Telefono</td>
+					<td>
+
+						<a th:href="@{/solicitante/editar/{id}(id=${soli.id})}" class="btn btn-info">Editar</a>
+						<a th:href="@{/solicitante/{id}(id=${soli.id})}" class="btn btn-danger">Eliminar</a>
+
+					</td>
+
+				</tr>
+
+			</tbody>
+
+	</div>
+
+</body>
+
+
+</html>

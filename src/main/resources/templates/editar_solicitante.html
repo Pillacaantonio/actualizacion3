@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+
+<head>
+
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+		integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+	<title>Registro de Solicitantes</title>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">
+			Control Solicitante
+		</a>
+
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/solicitante}">Control de Solicitantes</a>
+				</li>
+
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/equipo}">Equipos Disponibles</a>
+				</li>
+
+			</ul>
+			
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/listarReclamos}">Listar Reclamo</a>
+				</li>
+
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/nuevoreclamo}">Registrar Reclamo</a>
+				</li>
+
+			</ul>
+
+		</div>
+
+	</nav>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Registro de Solicitante</h1>
+				<div class="card-body">
+                    <form th:action="@{/solicitante/{id}=${solicitante.id}}" th:object="${solicitante}" method="POST">
+						<div class="form-group">
+							<label>Apellido : </label>
+							<input type="text" name="apellido" th:field"*{apellido}" class="form-control"
+								placeholder="Digite su apellido" />
+
+
+						</div>
+
+						<div class="form-group">
+							<label>Nombre : </label>
+							<input type="text" name="nombre" th:field"*{nombre}" class="form-control"
+								placeholder="Digite su nombre" />
+
+
+						</div>
+						<div class="form-group">
+							<label>Cargo : </label>
+							<input type="text" name="cargo" th:field"*{cargo}" class="form-control"
+								placeholder="Digite su cargo" />
+
+
+						</div> 
+			
+							<div class="form-group">
+							<label>Departamento : </label>
+							<input type="text" name="departamento" th:field"*{departamento}" class="form-control"
+								placeholder="Digite su direccion" />
+
+
+						</div>
+						<div class="form-group">
+							<label>Estado Civil : </label>
+							<input type="text" name="estadoCivil" th:field"*{estadoCivil}" class="form-control"
+								placeholder="Digite su estado civil" />
+
+
+						</div>
+						<div class="form-group">
+							<label>Fecha de nacimiento : </label>
+							<input type="text" name="fechaNacimiento" th:field"*{fechaNacimiento}" class="form-control"
+								placeholder="Digite su fecha de nacimiento" />
+
+
+						</div>
+						<div class="form-group">
+							<label>Telefono : </label>
+							<input type="text" name="telefono" th:field"*{telefono}" class="form-control"
+								placeholder="Digite su telefono" />
+
+
+						</div>
+								<div class="card-footer">
+
+						<input type="submit" value="Guardar" class="btn btn-success"
+
+					</div>
+
+
+
+					</form>
+
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+</body>
+
+
+</html>
+					<form th:action="@{/solicitante/{id}(id=${soli.id})}" th:object="${solicitante}" method="POST">

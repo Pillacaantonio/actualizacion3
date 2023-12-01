@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Envío</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">
+			Control Solicitante
+		</a>
+
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			
+			
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/solicitante}">Usuarios Registrados</a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/equipo}">Equipos Disponibles</a>
+				</li>
+
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/listarReclamos}">Listar Reclamo</a>
+				</li>
+
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/nuevoreclamo}">Registrar Reclamo</a>
+				</li>
+
+			</ul>
+			</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/envio}">Envios</a>
+				</li>
+
+			</ul>
+		
+
+		</div>
+
+	</nav>
+	<br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center">Registro de Envío</h1>
+                <div class="card-body">
+                    <form th:action="@{/envio}" th:object="${envio}" method="POST">
+                        <div class="form-group">
+        <label for="solicitante">Seleccione Solicitante:</label>
+        <select class="form-control" id="solicitante" name="solicitante.id">
+            <option selected>Seleccionar Solicitante</option>
+            <!-- Iterar sobre la lista de nombres de solicitantes -->
+            <option th:each="solicitante : ${nombresSolicitantes}"
+                    th:value="${solicitante.id}" 
+                    th:text="${solicitante.nombre}"> 
+            </option>
+        </select>
+    </div>
+                        <div class="form-group">
+                            <label for="destino">Destino:</label>
+                            <input type="text" class="form-control" id="destino" name="destino"
+                                placeholder="Ingrese la dirección del destinatario">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="otroNombre">Recibe otra persona:</label>
+                            <input type="text" class="form-control" id="otroNombre" name="nom_Otro"
+                                placeholder="Ingrese otro nombre">
+                        </div>
+
+                        <div class="form-group">
+        <label for="equipo">Seleccione Marca de Equipo:</label>
+        <select class="form-control" id="equipo" name="equipo.cod_Equipo">
+            <option selected>Seleccionar Marca</option>
+            <!-- Iterar sobre la lista de marcas de equipo -->
+            <option th:each="equipo : ${marcaEquipo}"
+                    th:value="${equipo.cod_Equipo}" 
+                    th:text="${equipo.marca_Equipo}">
+            </option>
+        </select>
+    </div>
+               
+								<div class="card-footer">
+
+						<input type="submit" value="Guardar" class="btn btn-success"</div>
+
+
+
+					</form>
+
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+</body>
+
+
+</html>
